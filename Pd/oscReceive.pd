@@ -1,0 +1,12 @@
+#N canvas 2 98 958 982 12;
+#X obj 158 240 oscparse;
+#X msg 103 92 listen 5005;
+#X obj 110 171 netreceive -u -b;
+#X obj 88 352 print parse-output;
+#X obj 295 366 print parse2;
+#X obj 287 332 list trim;
+#X connect 0 0 3 0;
+#X connect 0 0 5 0;
+#X connect 1 0 2 0;
+#X connect 2 0 0 0;
+#X connect 5 0 4 0;
