@@ -38,18 +38,18 @@ if __name__ == "__main__":
 
     client = udp_client.SimpleUDPClient(args.ip, args.portOut)
 
-    dispatcher=Dispatcher()
-    dispatcher.map("/filter",print)
+    # dispatcher=Dispatcher()
+    # dispatcher.map("/filter",print)
 
-    server = osc_server.ThreadingOSCUDPServer(
-        (args.ip, args.portIn),dispatcher)
-    print("serving on {}".format(server.server_address))
-    server.serve_forever()
+    # server = osc_server.ThreadingOSCUDPServer(
+    #     (args.ip, args.portIn),dispatcher)
+    # print("serving on {}".format(server.server_address))
+    # server.serve_forever()
 
 while True:
-    for x in range(10):
-        message = random.random()
-        print("sending message " + str(message))
-        client.send_message("/filter", message)
-        # led.toggle()
-        time.sleep(1)
+    # for x in range(10):
+    message = random.random()
+    print("sending message " + str(message))
+    client.send_message("/filter", message)
+    # led.toggle()
+    time.sleep(1)
