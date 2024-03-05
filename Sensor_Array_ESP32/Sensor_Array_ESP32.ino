@@ -1,9 +1,12 @@
+
 /*
 Code for using an array of HCSR04 ultrasonic sensors to triangulate the position and velocity of an object.
 For GTCMT Hackathon Spring 2024
 Renny Hyde 240303
 */
 #include <HCSR04.h>
+#include <ArduinoSort.h>
+
 
 struct sensor {
   HCSR04 *object;
@@ -35,6 +38,7 @@ float xavg_prev;
 float yavg_prev;
 float zavg = 0;
 float z_prev;
+float body = 300;
 
 ultrasonic s1;
 ultrasonic s2;
@@ -217,6 +221,14 @@ void loop() {
   dx = ((xavg - xavg_prev) / dt) * 1000;
   dy = ((yavg - yavg_prev) / dt) * 1000;
   dz = ((z - z_prev) / dt) * 1000;
+
+  //calculate body signal
+  sortArray(distances, numSensors);
+  body = 0;
+  for (int i = int(numSensors / 4); i < int((numSensors * 3)/4); i++) {
+    body = body + distances[i];
+  } 
+  body = body / (numSensors / 2);
   //store current
   // x_prev = x;
   // y_prev = y;
