@@ -34,16 +34,45 @@ float yavg = 0;
 float xavg_prev;
 float yavg_prev;
 float zavg = 0;
+float z_prev;
 
 ultrasonic s1;
 ultrasonic s2;
 ultrasonic s3;
 ultrasonic s4;
-HCSR04 hc(22, 23); //trig pin, echo pin
-HCSR04 hc2(22, 34);
-HCSR04 hc3(22, 35);
-HCSR04 hc4(22, 32);
-ultrasonic *sensors[] = {&s1, &s2, &s3, &s4};
+ultrasonic s5;
+ultrasonic s6;
+ultrasonic s7;
+ultrasonic s8;
+ultrasonic s9;
+ultrasonic s10;
+ultrasonic s11;
+ultrasonic s12;
+ultrasonic s13;
+ultrasonic s14;
+ultrasonic s15;
+ultrasonic s16;
+ultrasonic s17;
+ultrasonic s18;
+HCSR04 hc1(2, 34); //trig pin, echo pin
+HCSR04 hc2(2, 35);
+HCSR04 hc3(2, 32);
+HCSR04 hc4(2, 33);
+HCSR04 hc5(2, 25);
+HCSR04 hc6(2, 26);
+HCSR04 hc7(2, 27);
+HCSR04 hc8(2, 14);
+HCSR04 hc9(2, 12);
+HCSR04 hc10(2, 23);
+HCSR04 hc11(2, 22);
+HCSR04 hc12(2, 21);
+HCSR04 hc13(2, 19);
+HCSR04 hc14(2, 18);
+HCSR04 hc15(2, 5);
+HCSR04 hc16(2, 17);
+HCSR04 hc17(2, 16);
+HCSR04 hc18(2, 4);
+ultrasonic *sensors[] = {&s1, &s2, &s3, &s4, &s5, &s6, &s7, &s8, &s9, &s10, &s11, &s12, &s13, &s14, &s15, &s16, &s17, &s18};
 
 
 void setup() {
@@ -51,18 +80,60 @@ void setup() {
   Serial.begin(9600);
   // INITIALIZE SENSORS
   // Each sensor must be passed an HCSR04 object (initialized outside of function) and a static x and y position
-  s1.object = &hc;
+  s1.object = &hc1; //set
   s1.x = 1;
-  s1.y = 1;
-  s2.object = &hc2;
-  s2.x = d;
-  s2.y = 1;
-  s3.object = &hc3;
-  s3.x = 1;
-  s3.y = d;
-  s4.object = &hc4;
-  s4.x = d;
-  s4.y = d;
+  s1.y = 64.5;
+  s2.object = &hc2; //set
+  s2.x = 23.098;
+  s2.y = 62.23;
+  s3.object = &hc3; //set
+  s3.x = 43.688;
+  s3.y = 65.135;
+  s4.object = &hc4; //set
+  s4.x = 66.2305;
+  s4.y = 64.5;
+  s5.object = &hc5; //set
+  s5.x = 1;
+  s5.y = 43.18;
+  s6.object = &hc6; //set
+  s6.x = 22.59;
+  s6.y = 43.18;
+  s7.object = &hc7; //set
+  s7.x = 44.18;
+  s7.y = 44.815;
+  s8.object = &hc8; //set
+  s8.x = 64.77;
+  s8.y = 44.18;
+  s9.object = &hc9; //set
+  s9.x = 1;
+  s9.y = 22.86;
+  s10.object = &hc10; //set
+  s10.x = 23.225;
+  s10.y = 23.225;
+  s11.object = &hc11; //set
+  s11.x = 44.815;
+  s11.y = 23.86;
+  s12.object = &hc4; //set
+  s12.x = 66.405;
+  s12.y = 23.86;
+  s13.object = &hc13; //set
+  s13.x = 1;
+  s13.y = 1;
+  s14.object = &hc14; //set
+  s14.x = 23.59;
+  s14.y = 1;
+  s15.object = &hc15; //set
+  s15.x = 44.815;
+  s15.y = 1;
+  s16.object = &hc16; //set
+  s16.x = 66.405;
+  s16.y = 1;
+  s17.object = &hc17; //set
+  s17.x = 1;
+  s17.y = 83.55;
+  s18.object = &hc18; //set
+  s18.x = 65.405;
+  s18.y = 83.185;
   //initialize rolling average to zero
   for (int i =0; i < xyWindow; i++) {
     xwindow[i] = 0;
@@ -123,6 +194,7 @@ void loop() {
   //Compute z position from x and y (not x and y averages, this seems pretty robust but it could be better to use averages in the future)
   //Compute the distance from each sensor to the calculated x and y, then use pythagorean theorem to find z
   //Take average of all calculated z values
+  z_prev = z;
   int zCounter = 0;
   float xydistance;
   for (int i =0; i < numSensors; i++) {
@@ -149,6 +221,21 @@ void loop() {
   // x_prev = x;
   // y_prev = y;
   // z_prev = z;
+  Serial.print("x");
+  Serial.println(xavg);
+  Serial.print("y");
+  Serial.println(yavg);
+  Serial.print("z");
+  Serial.println(z);
+  Serial.print("H");
+  Serial.println(dx);
+  Serial.print("V");
+  Serial.println(dy);
+  Serial.print("F");
+  Serial.println(dz);
+  Serial.print("b");
+  Serial.println(body);
+  //Serial.print("~")
 
   delay(dt);   
 }
