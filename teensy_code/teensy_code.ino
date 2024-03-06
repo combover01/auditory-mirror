@@ -27,7 +27,8 @@ AudioControlSGTL5000     sgtl5000_1;     //xy=380.3666687011719,521.366668701171
 
 const int ledPin = 13;
 
-float maxRmsAmp = 0.0;
+float curRmsAmpLeft = 0;
+float curRmsAmpRight = 0;
 
 void setup() {
   // put your setup code here, to run once:
@@ -62,11 +63,10 @@ void loop() {
   sgtl5000_1.volume(vol);
   sgtl5000_1.lineOutLevel(31);
 
-  float curRmsAmp = rms1.read();
-  if (curRmsAmp > maxRmsAmp){
-    maxRmsAmp = curRmsAmp;
-  }
-  if (curRmsAmp > (0.5 * maxRmsAmp)){
+  curRmsAmpLeft = rms1.read();
+  curRmsAmpRight = rms2.read();
+
+  if (curRmsAmpLeft > 0 && curRmsAmpRight > 0){
     digitalWrite(ledPin, HIGH);   // set the LED on
   }
   else{
