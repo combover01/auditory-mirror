@@ -36,10 +36,11 @@ void setup() {
   sgtl5000_1.enable();
   sgtl5000_1.volume(0.6);
 
-  sgtl5000_1.autoVolumeDisable();
-  sgtl5000_1.audioProcessorDisable();
+  // sgtl5000_1.autoVolumeDisable();
+  sgtl5000_1.audioPreProcessorEnable();
+  sgtl5000_1.audioPostProcessorEnable();
   sgtl5000_1.unmuteLineout();
-  
+  // sgtl5000_1.dacVolume(0.7);
   pinMode(ledPin, OUTPUT);
   
   digitalWrite(ledPin, HIGH);   // set the LED on

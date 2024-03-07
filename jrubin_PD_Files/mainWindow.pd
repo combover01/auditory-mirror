@@ -1,4 +1,4 @@
-#N canvas 0 28 1440 900 12;
+#N canvas 0 25 1440 793 12;
 #X floatatom 114 102 5 0 100 0 - - - 0;
 #X text 114 49 x val;
 #X floatatom 219 104 5 1 100 0 - - - 0;
