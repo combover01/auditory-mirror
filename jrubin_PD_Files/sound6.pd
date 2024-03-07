@@ -1,4 +1,4 @@
-#N canvas 26 81 1440 900 12;
+#N canvas 0 25 1440 847 12;
 #X obj 226 391 scale;
 #X obj 760 422 scale;
 #X text 803 424 scale values to change second oscillator;
@@ -41,7 +41,6 @@
 #X obj 985 666 +~;
 #X obj 985 690 outlet~;
 #X floatatom 248 84 5 0 0 0 - - - 0;
-#X obj 733 726 output~;
 #X connect 0 0 4 0;
 #X connect 1 0 3 0;
 #X connect 3 0 11 0;
@@ -90,5 +89,4 @@
 #X connect 37 0 41 0;
 #X connect 37 0 36 0;
 #X connect 39 0 40 0;
-#X connect 39 0 42 0;
 #X connect 41 0 36 0;
