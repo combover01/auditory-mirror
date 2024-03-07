@@ -1,0 +1,51 @@
+<!DOCTYPE patchbay>
+<patchbay version="0.9.1" name="patchbay_1">
+ <output-sockets>
+  <socket type="jack-audio" client="pure_data" name="pd1" exclusive="off">
+   <plug>output_1</plug>
+  </socket>
+  <socket type="jack-audio" client="pure_data" name="pd2" exclusive="off">
+   <plug>output_2</plug>
+  </socket>
+  <socket type="jack-audio" client="pure_data" name="pd3" exclusive="off">
+   <plug>output_3</plug>
+  </socket>
+  <socket type="jack-audio" client="pure_data" name="pd4" exclusive="off">
+   <plug>output_4</plug>
+  </socket>
+  <socket type="jack-audio" client="pure_data" name="pd5" exclusive="off">
+   <plug>output_5</plug>
+  </socket>
+  <socket type="jack-audio" client="pure_data" name="pd6" exclusive="off">
+   <plug>output_6</plug>
+  </socket>
+  <socket type="jack-audio" client="pure_data" name="pd7" exclusive="off">
+   <plug>output_7</plug>
+  </socket>
+  <socket type="jack-audio" client="pure_data" name="pd8" exclusive="off">
+   <plug>output_8</plug>
+  </socket>
+ </output-sockets>
+ <input-sockets>
+  <socket type="jack-audio" client="system" name="system1" exclusive="off">
+   <plug>playback_1</plug>
+  </socket>
+  <socket type="jack-audio" client="system" name="system2" exclusive="off">
+   <plug>playback_2</plug>
+  </socket>
+  <socket type="jack-audio" client="teensy1" name="teensy3" exclusive="off">
+   <plug>playback_1</plug>
+  </socket>
+  <socket type="jack-audio" client="teensy1" name="teensy4" exclusive="off">
+   <plug>playback_2</plug>
+  </socket>
+ </input-sockets>
+ <slots/>
+ <cables>
+  <cable type="jack-audio" input="system1" output="pd1"/>
+  <cable type="jack-audio" input="system2" output="pd2"/>
+  <cable type="jack-audio" input="teensy3" output="pd3"/>
+  <cable type="jack-audio" input="teensy4" output="pd4"/>
+ </cables>
+</patchbay>
+
