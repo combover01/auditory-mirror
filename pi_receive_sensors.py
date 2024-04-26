@@ -4,7 +4,7 @@ from pythonosc import udp_client
 
 def send_to_pd(prefix, value):
     message = value.decode(encoding='ascii').strip()
-#     print(prefix + " " + message)
+    print(prefix + " " + message)
     client.send_message(prefix, float(message))
 
 def queryAttempt():
@@ -64,7 +64,7 @@ def queryRepeatedly():
         queryOnce()
 
 
-port = '/dev/ttyAMA0'
+port = 'COM14'
 # serial.EIGHTBITS
 esp = serial.Serial(port)
 print(esp.name)
